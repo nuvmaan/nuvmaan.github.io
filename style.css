@@ -1,0 +1,405 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto; /* Enable scrolling */
+    background: #00111a;
+    position: relative;
+  }
+  
+  canvas {
+    position: fixed; /* Use fixed so it stays in place during scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows interaction with elements below */
+    z-index: 1  ; /* Place canvas behind other content */
+  }
+  
+  header, main {
+    position: relative;
+    z-index: 1; /* Ensure content is in front of the snowfall */
+    padding: 20px;
+  }
+  
+  header {
+    background: #333;
+    color: white;
+  }
+  
+  main {
+    padding: 40px;
+    color: white;
+    min-height: 2000px; /* Make sure the page is tall enough to scroll */
+  }
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #001F3F;
+}
+
+.navbar-brand img {
+    width: 200px;
+    /* Adjust this size as per your logo */
+    height: auto;
+    display: block;
+    margin-top: 10px;
+    /* Optional: Adjust if you want some space from top */
+}
+
+.nav-link {
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #6EE2F5;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #001F3F, #655AF0);
+    /* Gradient background */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.section {
+    padding: 80px 20px;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.work img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.work img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+/* Portfolio Section Styles */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Portfolio Grid Layout */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Portfolio Item Styling */
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Portfolio Item Show Effect */
+.portfolio-item.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Overlay Styling */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    text-align: center;
+    color: #fff;
+    padding: 15px;
+}
+
+.overlay-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.overlay-content p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Fade-in effect for items on page load */
+.portfolio-item {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    
+
+.testimonial {
+    text-align: center;
+    padding: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.testimonial p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.testimonial span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #6EE2F5;
+}
+
+/* Contact Section Styling */
+.contact {
+    background-color: #001F3F;
+    padding: 80px 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.contact .form-control {
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #1c2b4d;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contact .form-control::placeholder {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.contact .form-control:focus {
+    border-color: #6EE2F5;
+    background-color: #2a3c5d;
+    outline: none;
+    box-shadow: 0 0 10px rgba(102, 226, 245, 0.5);
+}
+
+.contact .form-control:focus::placeholder {
+    color: #fff;
+}
+
+.contact .btn-primary {
+    background-color: #655AF0;
+    border-color: #655AF0;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+    max-width: 250px;
+    margin-top: 20px;
+}
+
+.contact .btn-primary:hover {
+    background-color: #6EE2F5;
+    border-color: #6EE2F5;
+    transform: scale(1.05);
+}
+
+.contact .btn-primary:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.contact .contact-form {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #1c2b4d;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.contact .contact-form:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contact .contact-form .mb-4 {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .contact h2 {
+        font-size: 2rem;
+    }
+
+    .contact .btn-primary {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .work img {
+        margin-bottom: 15px;
+    }
+
+    /* Adjust navbar brand image for mobile */
+    .navbar-brand img {
+        width: 150px;
+        /* Adjust size for smaller screens */
+    }
+}
+
+footer {
+    background-color: #001F3F;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+    border-top: 2px solid #6EE2F5;
+}
+
+footer p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+footer .social-icons a {
+    color: #fff;
+    font-size: 1.8rem;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    /* Remove underline from links */
+}
+
+footer .social-icons a:hover {
+    color: #6EE2F5;
+    transform: scale(1.1);
+}
+
+footer .social-icons a:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    footer .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    footer .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+    }
+}
