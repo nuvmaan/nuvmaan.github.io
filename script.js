@@ -131,3 +131,12 @@ submitButton.addEventListener("click", function (event) {
         recaptchaError.style.display = "none"; // Hide the error message if reCAPTCHA is verified
     }
 });
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', user => {
+    if (!user) {
+      window.netlifyIdentity.on('login', () => {
+        document.location.href = '/admin/';
+      });
+    }
+  });
+}
