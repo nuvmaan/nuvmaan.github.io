@@ -330,7 +330,7 @@ footer .social-icons a:hover {
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 3rem;
     }
 
     .hero p {
@@ -353,9 +353,8 @@ footer .social-icons a:hover {
 
 @media (max-width: 576px) {
     .hero h1 {
-        font-size: 1.5rem;
+        font-size: 3rem;
     }
-
     .hero p {
         font-size: 0.9rem;
     }
@@ -374,17 +373,14 @@ footer .social-icons a:hover {
     }
 }
 
-/* Back to Top Button */
 #backToTop {
     display: none;
-    /* Hidden by default */
+
     position: fixed;
     bottom: 40px;
     right: 40px;
     z-index: 100;
-    /* Place it above everything else */
     background-color: #655AF0;
-    /* Button color */
     color: white;
     border: none;
     outline: none;
