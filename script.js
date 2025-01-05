@@ -77,7 +77,7 @@ class SnowLayer {
 }
 
 const snowLayer = new SnowLayer("snowfall", {
-  numFlakes: 60, // Number of snowflakes
+  numFlakes: 30, // Number of snowflakes
   sizeMin: 10,
   sizeMax: 20,
   speedFactor: 0.1,
