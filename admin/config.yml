@@ -33,7 +33,6 @@ collections:
       - { label: "Site Title", name: "site_title", widget: "string" }
       - { label: "Hero Text", name: "hero_text", widget: "text" }
 
-collections:
   - name: "blogs"
     label: "Blogs"
     folder: "blogs"
