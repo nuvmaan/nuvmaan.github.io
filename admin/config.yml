@@ -1,0 +1,19 @@
+# admin/config.yml
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to main)
+
+media_folder: "static/img" # Media files will be stored in the static/img folder
+public_folder: "/img"
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog Posts" # Used in the UI
+    folder: "content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # The URL template for the documents
+    fields: # The fields for each document
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
