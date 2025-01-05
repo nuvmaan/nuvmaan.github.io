@@ -1,38 +1,11 @@
 backend:
-  name: git
-  branch: main # Replace with your branch name
-media_folder: "assets/uploads" # Folder for uploaded media files
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-  - name: "portfolio"
-    label: "Portfolio"
-    folder: "content/portfolio"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Image", name: "image", widget: "image" }
-
-
-  - name: "testimonials"
-    label: "Testimonials"
-    folder: "content/testimonials"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Name", name: "name", widget: "string" }
-      - { label: "Testimonial", name: "testimonial", widget: "text" }
-      - { label: "Photo", name: "photo", widget: "image" }
-
-  - name: "settings"
-    label: "Settings"
-    file: "content/settings.json"
-    fields:
-      - { label: "Site Title", name: "site_title", widget: "string" }
-      - { label: "Hero Text", name: "hero_text", widget: "text" }
-
   - name: "blogs"
     label: "Blogs"
     folder: "blogs"
