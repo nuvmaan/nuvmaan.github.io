@@ -41,6 +41,12 @@ nav {
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #001F3F;
+    background: rgba(0, 31, 63, 0.8);
+    transition: background-color 0.3s ease;
+}
+
+nav.scrolled {
+    background: #001F3F;
 }
 
 .navbar-brand img {
