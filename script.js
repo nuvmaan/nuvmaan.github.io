@@ -1,5 +1,3 @@
-const SNOWPILE_HEIGHT = window.innerHeight - 10; // Set the height of the snow pile
-
 class SnowLayer {
   constructor(canvasId, layerProps) {
     this.canvas = document.getElementById(canvasId);
