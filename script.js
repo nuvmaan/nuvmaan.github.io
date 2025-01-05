@@ -131,12 +131,37 @@ submitButton.addEventListener("click", function (event) {
         recaptchaError.style.display = "none"; // Hide the error message if reCAPTCHA is verified
     }
 });
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on('init', user => {
-    if (!user) {
-      window.netlifyIdentity.on('login', () => {
-        document.location.href = '/admin/';
+async function loadPortfolioItems() {
+  const portfolioGrid = document.getElementById("portfolio-grid");
+
+  try {
+      // Fetch the portfolio markdown files
+      const response = await fetch("/content/portfolio");
+      const files = await response.json(); // Ensure your site supports fetching these files
+
+      // Iterate through the portfolio items and create the HTML
+      files.forEach((file) => {
+          const { title, description, image } = file;
+
+          const portfolioItem = document.createElement("div");
+          portfolioItem.className = "portfolio-item";
+
+          portfolioItem.innerHTML = `
+              <img src="${image}" alt="${title}">
+              <div class="portfolio-overlay">
+                  <div class="overlay-content">
+                      <h3>${title}</h3>
+                      <p>${description}</p>
+                  </div>
+              </div>
+          `;
+
+          portfolioGrid.appendChild(portfolioItem);
       });
-    }
-  });
+  } catch (error) {
+      console.error("Error loading portfolio items:", error);
+  }
 }
+
+// Call the function when the page loads
+document.addEventListener("DOMContentLoaded", loadPortfolioItems);
