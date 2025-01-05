@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NUVMAAN Admin Dashboard">
+    <meta name="author" content="NUVMAAN">
+    <title>NUVMAAN Admin Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/admin">NUVMAAN Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="adminNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/admin">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/posts.html">Posts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/users.html">Users</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/settings.html">Settings</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="/admin/logout.html">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4">Welcome to the Admin Dashboard</h1>
+                <p class="lead">Manage your posts, users, and site settings easily from here.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Posts</h5>
+                        <p class="card-text">Create, edit, and delete blog posts.</p>
+                        <a href="/admin/posts.html" class="btn btn-primary">Go to Posts</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Users</h5>
+                        <p class="card-text">View, add, and manage user accounts.</p>
+                        <a href="/admin/users.html" class="btn btn-primary">Go to Users</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Site Settings</h5>
+                        <p class="card-text">Adjust your site's configuration and preferences.</p>
+                        <a href="/admin/settings.html" class="btn btn-primary">Go to Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 NUVMAAN. Admin Dashboard. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
 
