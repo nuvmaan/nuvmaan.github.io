@@ -77,7 +77,7 @@ class SnowLayer {
 }
 
 const snowLayer = new SnowLayer("snowfall", {
-  numFlakes: 30, // Number of snowflakes
+  numFlakes: 60, // Number of snowflakes
   sizeMin: 10,
   sizeMax: 20,
   speedFactor: 0.1,
@@ -90,14 +90,10 @@ const snowLayer = new SnowLayer("snowfall", {
 window.addEventListener("resize", () => snowLayer.resize());
 snowLayer.animate();
 
-// Get the form and submit button
-const form = document.getElementById("contact-form");
-const submitButton = document.getElementById("submit-button");
-const recaptchaError = document.getElementById("recaptcha-error");
-
-// Add event listener to the submit button
-submitButton.addEventListener("click", function (event) {
+// Form Submission with reCAPTCHA Verification
+document.getElementById("submit-button").addEventListener("click", function (event) {
   const recaptchaResponse = grecaptcha.getResponse();
+  const recaptchaError = document.getElementById("recaptcha-error");
 
   if (recaptchaResponse.length === 0) {
     event.preventDefault(); // Prevent form submission
@@ -107,6 +103,7 @@ submitButton.addEventListener("click", function (event) {
   }
 });
 
+// Load Portfolio Items
 async function loadPortfolioItems() {
   const portfolioGrid = document.getElementById("portfolio-grid");
 
@@ -121,7 +118,7 @@ async function loadPortfolioItems() {
       portfolioItem.className = "portfolio-item";
 
       portfolioItem.innerHTML = `
-        <img src="${image}" alt="${title}">
+        <img src="${image}" alt="${title}" loading="lazy">
         <div class="portfolio-overlay">
           <div class="overlay-content">
             <h3>${title}</h3>
@@ -139,6 +136,7 @@ async function loadPortfolioItems() {
 
 document.addEventListener("DOMContentLoaded", loadPortfolioItems);
 
+// Load Blogs
 document.addEventListener("DOMContentLoaded", () => {
   fetch("/blogs/index.json") // Assuming Netlify CMS creates index.json for blogs
     .then((response) => response.json())
@@ -149,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
           (blog) => `
               <div class="col-md-4">
                   <div class="blog-card">
-                      <img src="${blog.image}" alt="${blog.title}">
+                      <img src="${blog.image}" alt="${blog.title}" loading="lazy">
                       <div class="card-body">
                           <h5 class="card-title">${blog.title}</h5>
                           <p class="card-text">${blog.excerpt}</p>
@@ -163,10 +161,10 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((err) => console.error("Failed to load blogs:", err));
 });
-// Get the button
+
+// Back to Top Button Functionality
 let backToTopButton = document.getElementById("backToTop");
 
-// When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function () {
   scrollFunction();
 };
@@ -179,17 +177,20 @@ function scrollFunction() {
   }
 }
 
-// When the user clicks on the button, scroll to the top of the document
 backToTopButton.addEventListener("click", function () {
   document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
 });
 
-window.addEventListener('scroll', function () {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-});
+// Show notice banner if not shown before
+window.onload = function () {
+  if (!localStorage.getItem('bannerShown')) {
+    document.getElementById('noticeBanner').style.display = 'block';
+  }
+};
+
+// Close notice banner and set flag
+function closeBanner() {
+  document.getElementById('noticeBanner').style.display = 'none';
+  localStorage.setItem('bannerShown', 'true');
+}
