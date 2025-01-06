@@ -25,8 +25,8 @@
     <div class="snowfall-container"></div>
     <canvas id="snowfall"></canvas>
 
-    <button id="backToTop" title="Go to top">
-        <i class="fas fa-arrow-up"></i>
+    <button id="backToTop" title="Go to top" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
     <!-- Navbar -->
@@ -63,8 +63,8 @@
             <p>
                 <strong>Under Construction:</strong> – The site is still under construction. Please excuse the Mess.
             </p>
-            <button class="close-btn" onclick="closeBanner()">
-                <i class="fa fa-times"></i>
+            <button class="close-btn" onclick="closeBanner()" aria-label="Close notice banner">
+                <i class="fa fa-times" aria-hidden="true"></i>
             </button>
         </div>
     </div>
@@ -142,12 +142,12 @@
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
-                    data-bs-slide="prev">
+                    data-bs-slide="prev" aria-label="Previous testimonial">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
-                    data-bs-slide="next">
+                    data-bs-slide="next" aria-label="Next testimonial">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -162,14 +162,13 @@
             <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="contact-form"
                 id="contact-form">
                 <div class="mb-4">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required aria-label="Your Name">
                 </div>
                 <div class="mb-4">
-                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                    <input type="email" name="email" class="form-control" placeholder="Your Email" required aria-label="Your Email">
                 </div>
                 <div class="mb-4">
-                    <textarea name="message" class="form-control" rows="4" placeholder="Your Message"
-                        required></textarea>
+                    <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required aria-label="Your Message"></textarea>
                 </div>
                 <div data-netlify-recaptcha="true"></div>
                 <div id="recaptcha-error" style="color: red; display: none; font-size: 14px; margin-top: 10px;">
@@ -177,7 +176,7 @@
                 </div>
                 <input type="hidden" name="redirect" value="/thank-you.html">
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary" id="submit-button">Send Message</button>
+                    <button type="submit" class="btn btn-primary" id="submit-button" aria-label="Send Message">Send Message</button>
                 </div>
             </form>
         </div>
