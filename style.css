@@ -461,10 +461,10 @@ footer .social-icons a:hover {
 
 @media (max-width: 576px) {
     .hero h1 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
     .hero p {
-        font-size: 0.9rem;
+        font-size: 1.2rem;
     }
 
     .section h2 {
