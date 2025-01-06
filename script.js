@@ -103,64 +103,7 @@ document.getElementById("submit-button").addEventListener("click", function (eve
   }
 });
 
-// Load Portfolio Items
-async function loadPortfolioItems() {
-  const portfolioGrid = document.getElementById("portfolio-grid");
 
-  try {
-    const response = await fetch("/content/portfolio");
-    const files = await response.json();
-
-    files.forEach((file) => {
-      const { title, description, image } = file;
-
-      const portfolioItem = document.createElement("div");
-      portfolioItem.className = "portfolio-item";
-
-      portfolioItem.innerHTML = `
-        <img src="${image}" alt="${title}" loading="lazy">
-        <div class="portfolio-overlay">
-          <div class="overlay-content">
-            <h3>${title}</h3>
-            <p>${description}</p>
-          </div>
-        </div>
-      `;
-
-      portfolioGrid.appendChild(portfolioItem);
-    });
-  } catch (error) {
-    console.error("Error loading portfolio items:", error);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", loadPortfolioItems);
-
-// Load Blogs
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("/blogs/index.json") // Assuming Netlify CMS creates index.json for blogs
-    .then((response) => response.json())
-    .then((data) => {
-      const blogContainer = document.getElementById("blog-container");
-      blogContainer.innerHTML = data
-        .map(
-          (blog) => `
-              <div class="col-md-4">
-                  <div class="blog-card">
-                      <img src="${blog.image}" alt="${blog.title}" loading="lazy">
-                      <div class="card-body">
-                          <h5 class="card-title">${blog.title}</h5>
-                          <p class="card-text">${blog.excerpt}</p>
-                          <a href="/blogs/${blog.slug}.html" class="btn btn-primary">Read More</a>
-                      </div>
-                  </div>
-              </div>
-          `
-        )
-        .join("");
-    })
-    .catch((err) => console.error("Failed to load blogs:", err));
-});
 
 // Back to Top Button Functionality
 let backToTopButton = document.getElementById("backToTop");
