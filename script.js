@@ -137,3 +137,50 @@ function closeBanner() {
   document.getElementById('noticeBanner').style.display = 'none';
   localStorage.setItem('bannerShown', 'true');
 }
+
+const razorpayApiKey = process.env.RAZORPAY_API_KEY;
+
+// Function to handle Razorpay payment initiation
+function initiatePayment(orderDetails) {
+    const options = {
+        key: razorpayApiKey, // Razorpay key from environment variables
+        amount: orderDetails.amount * 1000, // amount in the smallest unit
+        currency: orderDetails.currency,
+        name: 'Nuvmaan',
+        description: orderDetails.description,
+        image: 'assets/logo.png',
+        handler: function (response) {
+            // Handle successful payment here
+            alert('Payment successful');
+        },
+        prefill: {
+            name: orderDetails.customerName,
+            email: orderDetails.customerEmail,
+            contact: orderDetails.customerPhone,
+        },
+        notes: {
+            address: orderDetails.shippingAddress,
+        },
+        theme: {
+            color: '#F37254',
+        },
+    };
+
+    const rzp1 = new Razorpay(options);
+    rzp1.open();
+}
+
+// Example usage
+const orderDetails = {
+    amount: 500, // 500 INR
+    currency: 'INR',
+    description: 'Description of the gig service',
+    customerName: 'John Doe',
+    customerEmail: 'john@example.com',
+    customerPhone: '1234567890',
+    shippingAddress: '1234 Some Street, Some City, Some State',
+};
+
+// Call initiatePayment when needed
+initiatePayment(orderDetails);
+
