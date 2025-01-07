@@ -140,37 +140,55 @@ function closeBanner() {
 
 const razorpayApiKey = process.env.RAZORPAY_API_KEY;
 
-// Function to handle Razorpay payment initiation
+// Function to initiate payment via Razorpay
 function initiatePayment(orderDetails) {
-    const options = {
-        key: razorpayApiKey, // Razorpay key from environment variables
-        amount: orderDetails.amount * 1000, // amount in the smallest unit
-        currency: orderDetails.currency,
-        name: 'Nuvmaan',
-        description: orderDetails.description,
-        image: 'assets/logo.png',
-        handler: function (response) {
-            // Handle successful payment here
-            alert('Payment successful');
+    // Call serverless function to create a Razorpay order
+    fetch('/.netlify/functions/payment', {
+        method: 'POST',
+        body: JSON.stringify(orderDetails),
+        headers: {
+            'Content-Type': 'application/json',
         },
-        prefill: {
-            name: orderDetails.customerName,
-            email: orderDetails.customerEmail,
-            contact: orderDetails.customerPhone,
-        },
-        notes: {
-            address: orderDetails.shippingAddress,
-        },
-        theme: {
-            color: '#F37254',
-        },
-    };
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if (data.orderId) {
+            // Create Razorpay payment using the orderId from the serverless function
+            const options = {
+                key: process.env.RAZORPAY_KEY_ID, // Razorpay key from environment variables
+                amount: orderDetails.amount * 100, // amount in the smallest unit
+                currency: orderDetails.currency,
+                name: 'Your Business Name',
+                description: orderDetails.description,
+                image: 'logo.png',
+                order_id: data.orderId, // Use the orderId from serverless function
+                handler: function (response) {
+                    // Handle successful payment here
+                    alert('Payment successful');
+                },
+                prefill: {
+                    name: orderDetails.customerName,
+                    email: orderDetails.customerEmail,
+                    contact: orderDetails.customerPhone,
+                },
+                notes: {
+                    address: orderDetails.shippingAddress,
+                },
+                theme: {
+                    color: '#F37254',
+                },
+            };
 
-    const rzp1 = new Razorpay(options);
-    rzp1.open();
+            const rzp1 = new Razorpay(options);
+            rzp1.open();
+        } else {
+            console.error('Failed to create Razorpay order');
+        }
+    })
+    .catch((error) => console.error('Error creating order:', error));
 }
 
-// Example usage
+// Example usage of initiatePayment function
 const orderDetails = {
     amount: 500, // 500 INR
     currency: 'INR',
@@ -183,4 +201,3 @@ const orderDetails = {
 
 // Call initiatePayment when needed
 initiatePayment(orderDetails);
-
