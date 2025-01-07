@@ -137,5 +137,4 @@ function closeBanner() {
   document.getElementById('noticeBanner').style.display = 'none';
   localStorage.setItem('bannerShown', 'true');
 }
-document.getElementById("gig-form").addEventListener("submit", function(event) {
-  event.preventDefault();
+
