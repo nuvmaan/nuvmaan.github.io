@@ -480,3 +480,46 @@ footer .social-icons a:hover {
         margin: 0 8px;
     }
 }
+.gig-request {
+    padding: 20px;
+    background: #f4f4f4;
+    margin: 20px;
+    border-radius: 8px;
+  }
+  
+  #gig-form label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  #gig-form textarea, #gig-form input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #payment-section {
+    padding: 20px;
+    background: #e7f7e7;
+    margin: 20px;
+    border-radius: 8px;
+  }
+  
