@@ -137,36 +137,3 @@ function closeBanner() {
   document.getElementById('noticeBanner').style.display = 'none';
   localStorage.setItem('bannerShown', 'true');
 }
- // Razorpay Checkout Configuration
-    document.getElementById('rzp-button').addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const options = {
-            key: '<YOUR_RAZORPAY_KEY>', // Replace with your Razorpay Key ID
-            amount: 50000, // Payment amount in smallest currency unit (e.g., 50000 paise = ₹500)
-            currency: 'INR',
-            name: 'NUVMAAN Portfolio',
-            description: 'Payment for services',
-            image: 'assets/logo.png', // Add your logo path here
-            handler: function (response) {
-                // Handle successful payment
-                alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
-            },
-            prefill: {
-                name: 'Your Name', // Optional: User name
-                email: 'youremail@example.com', // Optional: User email
-                contact: '9999999999', // Optional: User phone
-            },
-            theme: {
-                color: '#3399cc',
-            },
-        };
-
-        const rzp = new Razorpay(options);
-        rzp.open();
-
-        // Prevent default action
-        rzp.on('payment.failed', function (response) {
-            alert(`Payment failed! Error: ${response.error.description}`);
-        });
-    });
