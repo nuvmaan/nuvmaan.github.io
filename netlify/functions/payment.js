@@ -1,13 +1,15 @@
 const Razorpay = require('razorpay');
 
 exports.handler = async function(event, context) {
+    // Initialize Razorpay with keys from Netlify environment variables
     const razorpay = new Razorpay({
-        key_id: process.env.RAZORPAY_API_KEY,
-        key_secret: process.env.RAZORPAY_SECRET_KEY,
+        key_id: process.env.RAZORPAY_KEY_ID,
+        key_secret: process.env.RAZORPAY_SECRET,
     });
 
     const { amount, currency, description } = JSON.parse(event.body);
 
+    // Razorpay order options
     const options = {
         amount: amount * 100, // amount in the smallest unit
         currency: currency,
@@ -18,6 +20,7 @@ exports.handler = async function(event, context) {
     };
 
     try {
+        // Create Razorpay order
         const order = await razorpay.orders.create(options);
         return {
             statusCode: 200,
